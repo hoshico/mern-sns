@@ -1,7 +1,23 @@
 const router = require("express").Router();
+const User = require("../models/User");
+/*
+  ユーザー登録
+  登録なのでpostを使用
+  status500はサーバー関連のエラー
+*/
+router.post("/register", async (req, res) => {
+  try {
+    const newUser = await new User({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+    });
 
-router.get('/', (req, res) => {
-  res.send("auth router");
+    const user = await newUser.save();
+    return res.status(200).json(user);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
 });
 
 // exportする必要がある

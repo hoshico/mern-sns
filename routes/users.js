@@ -1,8 +1,9 @@
 const router = require("express").Router();
 
-router.get('/', (req, res) => {
-  res.send("user router");
-});
+
+//router.get('/', (req, res) => {
+//  res.send("user router");
+//});
 
 // exportする必要がある
 module.exports = router;
