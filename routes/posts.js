@@ -59,7 +59,7 @@ router.put("/:id/like", async(req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     // まだ投稿にいいねが押されていなければいいねが押せる
-    if(!post.likes.includes(req.body.userId)) {
+    if (!post.likes.includes(req.body.userId)) {
       await post.updateOne({
         $push: {
           likes: req.body.userId,
